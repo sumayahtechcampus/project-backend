@@ -26,10 +26,10 @@ const router = express.Router()
 
 // INDEX
 // GET /parents
-router.get('/parents', requireToken, (req, res, next) => {
+router.get('/parents',  (req, res,next) => {
   
   Example.find({owner: req.user.id})
-    .then(examples => res.status(200).json({examples: examples}))
+    .then(examples => res.status(200).json({parent: parent}))
     .catch(next)
   
 
