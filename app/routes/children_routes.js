@@ -18,7 +18,7 @@ const router = express.Router()
 
 
 
-router.get('/children', requireToken, (req, res, next) => {
+router.get('/children',requireToken,(req, res, next) => {
   
   Children.find({owner: req.user.id})
     .then(children => res.status(200).json({children: children}))
@@ -26,7 +26,7 @@ router.get('/children', requireToken, (req, res, next) => {
   
   
 })
-router.get('/children/:id', requireToken, (req, res, next) => {
+router.get('/children/:id', (req, res, next) => {
  
   Children.findById(req.params.id)
     .then(handle404)
@@ -43,15 +43,18 @@ router.get('/children/:id', requireToken, (req, res, next) => {
 router.post('/children', requireToken, (req, res, next) => {
   
   req.body.children.owner = req.user.id
+  console.log("post method")
   Children.create(req.body.children)
     
     .then(children => {
       res.status(201).json({ children: children.toObject() })
     })
     
-    .catch(next)
+    .catch(error => {
+      res.json({error: error})
+    })
 })
-router.patch('/children/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/children/:id', removeBlanks, (req, res, next) => {
   
   delete req.body.children.owner
   Children.findById(req.params.id)
@@ -65,7 +68,7 @@ router.patch('/children/:id', requireToken, removeBlanks, (req, res, next) => {
     .then(() => res.status(204))
     .catch(next)
 })
-router.delete('/children /:id', requireToken, (req, res, next) => {
+router.delete('/children /:id', (req, res, next) => {
   Children.findById(req.params.id)
     .then(handle404)
     .then(children => {
