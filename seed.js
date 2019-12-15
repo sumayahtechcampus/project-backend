@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Center = require('./app/models/center');
+const db = require('./config/db')
 
 
-const mongoURI = 'mongodb://localhost/mongoRelationships';
-mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
+// const mongoURI = 'mongodb://localhost/mongoRelationships';
+mongoose.connect(db, { useNewUrlParser: true }, () => {
   console.log('the connection with mongod is established')
 });
 
@@ -27,10 +28,10 @@ const centerActivity = [
     },
 ];
 
-// Center.insertMany(centerActivity, (err, centers)=>{
-//     if(err){
-//         console.log(err)
-//     }else{
-//         console.log(centers);
-//     }
-// });
+Center.insertMany(centerActivity, (err, centers)=>{
+    if(err){
+        console.log(err)
+    }else{
+        console.log(centers);
+    }
+});
