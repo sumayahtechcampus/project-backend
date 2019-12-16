@@ -45,6 +45,10 @@ router.post('/sign-up', (req, res, next) => {
       // return necessary params to create a user
       return {
         email: req.body.credentials.email,
+        age: req.body.credentials.age,
+        name: req.body.credentials.name,
+        phone: req.body.credentials.phone,
+        relation: req.body.credentials.relation,
         hashedPassword: hash
       }
     })
@@ -52,7 +56,7 @@ router.post('/sign-up', (req, res, next) => {
     .then(user => User.create(user))
     // send the new user object back with status 201, but `hashedPassword`
     // won't be send because of the `transform` in the User model
-    .then(user => res.status(201).json({ user: user.toObject() }))
+    .then(user => res.status(201).json({ user: user.toObject(), users: user.phone }))
     // pass any errors along to the error handler
     .catch(next)
 })
