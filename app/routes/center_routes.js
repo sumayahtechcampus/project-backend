@@ -57,7 +57,7 @@ router.patch('/centers/:id', removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
   delete req.body.center.owner
-  Center.findById(req.params.id)
+  Center.findByIdAndUpdate(req.params.id)
     .then(handle404)
     .then(center => {
       requireOwnership(req, center)
@@ -72,7 +72,7 @@ router.patch('/centers/:id', removeBlanks, (req, res, next) => {
 // DESTROY
 // DELETE /centers/5a7db6c74d55bc51bdf39793
 router.delete('/centers/:id', (req, res, next) => {
-  Center.findById(req.params.id)
+  Center.findByIdAndRemove(req.params.id)
     .then(handle404)
     .then(center => {
       requireOwnership(req, center)

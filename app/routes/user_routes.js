@@ -43,6 +43,7 @@ router.post('/sign-up', (req, res, next) => {
     .then(() => bcryptjs.hash(req.body.credentials.password, bcryptjsSaltRounds))
     .then(hash => {
       // return necessary params to create a user
+      console.log(req.body.credentials)
       return {
         email: req.body.credentials.email,
         age: req.body.credentials.age,

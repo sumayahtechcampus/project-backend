@@ -26,12 +26,29 @@ const centerActivity = [
         category: 'FUN & LEARN',
         description: 'Little Explorers has three unique main areas that helps children develop their sense of individuality and social understanding, learn about spatial and time-related awareness, excite their thirst for knowledge, build their understanding of science and technology and burn off some energy through exercise!',
     },
+    {
+        name: 'Global Art',
+        category: 'FUN & LEARN',
+        description: 'Art enhances creative, imaginative, and Innovative thinking and skills in children allowing them to learn, to explore and to discover new ‘frontiers’ of thinking and doing things! These lifetime skills will be useful whether they have to deal with an everyday problem at home or school or a work related challenge.',
+    },
+    {
+        name: 'Aqua Tots',
+        category: 'FUN & LEARN',
+        description: 'Our mission is to help prevent drownings by working with the community to provide a standard of excellence in teaching children and adults water safety.  With years of experience, a comprehensive curriculum, quality swim instructors, state-of-the-art facilities, and convenient locations, Aqua-Tots has it all to serve your family',
+    },
+   
+    {
+        name: 'Future Buds',
+        category: 'FUN & Think & LEARN',
+        description: 'Future Buds Club offers a group of fun activities for children away from the use of devices where we depend on the child completely in terms of movement, focus, balance, thinking, skills and development',
+    },
 ];
 
-Center.insertMany(centerActivity, (err, centers)=>{
-    if(err){
-        console.log(err)
-    }else{
-        console.log(centers);
-    }
-});
+// Center.insertMany(centerActivity, (err, centers)=>{
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(centers);
+//     }
+// });
+
