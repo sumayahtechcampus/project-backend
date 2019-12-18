@@ -40,6 +40,8 @@ router.get('/children/:id', (req, res, next) => {
    
     .catch(next)
 })
+// CREATE
+// POST /children
 router.post('/children', requireToken, (req, res, next) => {
   
   req.body.children.owner = req.user.id
@@ -57,7 +59,7 @@ router.post('/children', requireToken, (req, res, next) => {
 router.patch('/children/:id', removeBlanks, (req, res, next) => {
   
   delete req.body.children.owner
-  Children.findById(req.params.id)
+  Children.findByIdAndUpdate(req.params.id)
     .then(handle404)
     .then(children => {
       
